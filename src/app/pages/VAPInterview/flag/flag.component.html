@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <mat-card>
+        <mat-card-title>Country Flag</mat-card-title>
+        <hr><br>
+        <form [formGroup]="_countryForm">
+            <div class="row">
+                <div class="col-sm-5">
+                    <mat-form-field>
+                        <mat-select placeholder="country Names" formControlName="formcountryName" 
+                            (selectionChange)="changeCountry()">
+                            <mat-option>--None--</mat-option>
+                            <mat-option *ngFor="let country of _countryList" 
+                            [value]="country.CountryName">
+                                {{country.CountryName}}</mat-option>
+                        </mat-select>
+                        <mat-error>
+                            Please provide name.
+                      </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div *ngFor="let flags of _myFlag">
+                    <img width="300" height="200" *ngIf="flags.name==_myCountry" [src]="flags.flag">
+                </div>
+            </div>
+        </form>
+    </mat-card>
+</div>
